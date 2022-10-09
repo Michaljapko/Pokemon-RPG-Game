@@ -5,4 +5,6 @@
 - TypeScript
 - Framer Motion
 - axios 
-- 
+- firebase
+- sass
+- tailwind
