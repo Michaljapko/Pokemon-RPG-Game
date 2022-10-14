@@ -4,7 +4,7 @@ import { RootState } from "store/store";
 const initialState = {
   backpack: {
     candy: 0,
-    searchDevice: 0,
+    searchDevice: 3,
     pokeball: 0,
     medpack: 0,
     bioInformation: 0,
@@ -16,11 +16,13 @@ export const trainserSlice = createSlice({
   name: "trainserSlice",
   initialState,
   reducers: {
-    useCandy: (state, payload) => {
-      state.backpack.candy = 6;
+    reduceSearchDevice: (state) => {
+      state.backpack.searchDevice = state.backpack.searchDevice - 1;
     },
   },
 });
+
+export const { reduceSearchDevice } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;
 
