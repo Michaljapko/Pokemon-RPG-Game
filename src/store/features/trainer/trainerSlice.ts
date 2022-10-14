@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "store/store";
 
 const initialState = {
   backpack: {
@@ -11,10 +12,16 @@ const initialState = {
   },
 };
 
-export const pokemonSlice = createSlice({
-  name: "pokemonSlice",
+export const trainserSlice = createSlice({
+  name: "trainserSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    useCandy: (state, payload) => {
+      state.backpack.candy = 6;
+    },
+  },
 });
 
-export default pokemonSlice.reducer;
+export const selecktBackpack = (state: RootState) => state.trainer.backpack;
+
+export default trainserSlice.reducer;
