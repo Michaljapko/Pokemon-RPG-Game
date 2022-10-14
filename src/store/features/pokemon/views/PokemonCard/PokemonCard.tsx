@@ -4,6 +4,10 @@ const PokemonCard = () => {
   const pokemon = useAppSelector(selecktPokemon);
   return (
     <div>
+      <img
+        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.id}.png`}
+        alt={pokemon.name}
+      />
       <h2>{pokemon.name}</h2>
       <p>{pokemon.type}</p>
       <p>Attack:{pokemon.attack}</p>

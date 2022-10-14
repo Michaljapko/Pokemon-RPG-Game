@@ -43,7 +43,7 @@ export const pokemonSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPokemon.fulfilled, (state, action) => {
       const pokemon = {
-        id: "3234",
+        id: action.payload.id,
         name: action.payload.name,
         type: action.payload.types[0].type.name,
         attack: action.payload.stats[1].base_stat,
@@ -52,8 +52,6 @@ export const pokemonSlice = createSlice({
         hp: action.payload.stats[0].base_stat,
         currentHp: action.payload.stats[0].base_stat,
       };
-      console.log(pokemon);
-
       state.pokemon = pokemon;
     });
   },

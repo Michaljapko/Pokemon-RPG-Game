@@ -4,11 +4,7 @@ import { useAppDispatch } from "store/hooks";
 const SearchPokemon = () => {
   const dispatch = useAppDispatch();
 
-  return (
-    <p>
-      {<button onClick={() => dispatch(getPokemon())}>SearchPokemon</button>}
-    </p>
-  );
+  return <button onClick={() => dispatch(getPokemon())}>SearchPokemon</button>;
 };
 
 export default SearchPokemon;
