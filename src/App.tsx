@@ -3,6 +3,7 @@ import CatchPokemon from "store/features/gameplay/views/CatchPokemon";
 import SearchPokemon from "store/features/gameplay/views/SearchPokemon";
 import Pokedex from "store/features/pokedex/views/Pokedex/Pokedex";
 import PokemonCard from "store/features/pokemon/views/PokemonCard";
+import Shop from "store/features/shop/views/Shop/Shop";
 import TrainerBack from "store/features/trainer/views/TrainerBack/TrainerBack";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <SearchPokemon />
       <CatchPokemon />
       <Pokedex />
+      <Shop />
     </>
   );
 }

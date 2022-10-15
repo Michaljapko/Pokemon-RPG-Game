@@ -14,7 +14,7 @@ const Pokedex = () => {
             <p>
               {pokemon.currentHp}/{pokemon.hp}
             </p>
-            <p>Edit name / Heal / Lvl Up </p>
+            <p>Edit name / Heal / Lvl Up / Sell</p>
           </div>
         ))}
     </div>
