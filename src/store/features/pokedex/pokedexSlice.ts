@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "store/store";
 import { PokemonType } from "./types/pokemon.type";
 
@@ -10,11 +10,13 @@ export const pokedexSlice = createSlice({
   name: "trainserSlice",
   initialState,
   reducers: {
-    reduceSearchDevice: (state) => {},
+    catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
+      state.pokedexPokemons = [payload, ...state.pokedexPokemons];
+    },
   },
 });
 
-// export const { getPokedex } = pokedexSlice.actions;
+export const { catchPokemon } = pokedexSlice.actions;
 
 export const selecktPokedex = (state: RootState) =>
   state.pokedex.pokedexPokemons;

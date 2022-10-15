@@ -1,4 +1,5 @@
 import React from "react";
+import CatchPokemon from "store/features/gameplay/views/CatchPokemon";
 import SearchPokemon from "store/features/gameplay/views/SearchPokemon";
 import Pokedex from "store/features/pokedex/views/Pokedex/Pokedex";
 import PokemonCard from "store/features/pokemon/views/PokemonCard";
@@ -10,6 +11,7 @@ function App() {
       <TrainerBack />
       <PokemonCard />
       <SearchPokemon />
+      <CatchPokemon />
       <Pokedex />
     </>
   );
