@@ -1,18 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getRandomInt } from "helpers/getRandomInt";
 import { RootState } from "store/store";
+import { PokemonType } from "../pokedex/types/pokemon.type";
 
 const initialState: {
-  pokemon: {
-    id: string;
-    name: string;
-    type: string;
-    attack: number;
-    defence: number;
-    expirience: number;
-    hp: number;
-    currentHp: number;
-  };
+  pokemon: PokemonType;
 } = {
   pokemon: {
     id: "Pikachuy",
