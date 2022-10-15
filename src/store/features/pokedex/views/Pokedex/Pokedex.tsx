@@ -9,7 +9,7 @@ const Pokedex = () => {
       <h3>Pokedex {pokedexPokemons.length}</h3>
       {pokedexPokemons &&
         pokedexPokemons.map((pokemon) => (
-          <div>
+          <div key={pokemon.id}>
             <h4>{pokemon.name}</h4>
             <p>
               {pokemon.currentHp}/{pokemon.hp}
