@@ -1,4 +1,5 @@
 import { useAppSelector } from "store/hooks";
+import { calculateCP } from "../../helpers/calculateCP";
 import { selecktPokemon } from "../../pokemonSlice";
 const PokemonCard = () => {
   const pokemon = useAppSelector(selecktPokemon);
@@ -9,6 +10,7 @@ const PokemonCard = () => {
         alt={pokemon.name}
       />
       <h2>{pokemon.name}</h2>
+      <h3>CP: {calculateCP(pokemon)}</h3>
       <p>{pokemon.type}</p>
       <p>Attack:{pokemon.attack}</p>
       <p>Defence:{pokemon.defence}</p>

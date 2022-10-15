@@ -1,3 +1,4 @@
+import { calculateCP } from "store/features/pokemon/helpers/calculateCP";
 import { useAppSelector } from "store/hooks";
 import { selecktPokedex } from "../../pokedexSlice";
 
@@ -11,6 +12,7 @@ const Pokedex = () => {
         pokedexPokemons.map((pokemon) => (
           <div key={pokemon.id}>
             <h4>{pokemon.name}</h4>
+            <h3>CP: {calculateCP(pokemon)}</h3>
             <p>
               {pokemon.currentHp}/{pokemon.hp}
             </p>
