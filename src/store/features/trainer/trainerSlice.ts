@@ -1,8 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { CANDY_PRICE, MEDPACK_PRICE, POKEBALL_PRICE } from "constant/prices";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  CANDY_PRICE,
+  MEDPACK_PRICE,
+  PHOTO_PRICE,
+  POKEBALL_PRICE,
+} from "constant/prices";
 import { RootState } from "store/store";
 
-const initialState = {
+const initialState: {
+  backpack: {
+    candy: number;
+    searchDevice: number;
+    pokeball: number;
+    medpack: number;
+    bioInformation: number;
+    money: number;
+  };
+  photographedPokemon: string[];
+  soldPhoto: string[];
+} = {
   backpack: {
     candy: 0,
     searchDevice: 300,
@@ -11,6 +27,8 @@ const initialState = {
     bioInformation: 0,
     money: 1000,
   },
+  photographedPokemon: [],
+  soldPhoto: [],
 };
 
 export const trainserSlice = createSlice({
@@ -35,6 +53,15 @@ export const trainserSlice = createSlice({
       state.backpack.pokeball = state.backpack.medpack + 1;
       state.backpack.money = state.backpack.money - MEDPACK_PRICE;
     },
+    takePhoto: (state, { payload }: PayloadAction<string>) => {
+      state.photographedPokemon = [...state.photographedPokemon, payload];
+    },
+    sellPhoto: (state) => {
+      state.backpack.money =
+        state.backpack.money + state.photographedPokemon.length * PHOTO_PRICE;
+      state.soldPhoto = [...state.photographedPokemon, ...state.soldPhoto];
+      state.photographedPokemon = [];
+    },
   },
 });
 
@@ -44,8 +71,14 @@ export const {
   buyPokeball,
   buyMedpack,
   buyCandy,
+  takePhoto,
+  sellPhoto,
 } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;
+export const selecktUnsoldPhoto = (state: RootState) =>
+  state.trainer.photographedPokemon
+export const selecktPhotographedPokemon = (state: RootState) =>
+  state.trainer.photographedPokemon.concat(state.trainer.soldPhoto);
 
 export default trainserSlice.reducer;
