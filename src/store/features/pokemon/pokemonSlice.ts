@@ -3,6 +3,13 @@ import { getRandomInt } from "helpers/getRandomInt";
 import { RootState } from "store/store";
 import { PokemonType } from "../pokedex/types/pokemon.type";
 
+const addPrefixZero = (id: string) => {
+  while (id.toString().length < 3) {
+    id = 0 + id.toString();
+  }
+  return id;
+};
+
 const initialState: {
   pokemon: PokemonType;
 } = {
@@ -35,7 +42,7 @@ export const pokemonSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPokemon.fulfilled, (state, action) => {
       const pokemon = {
-        id: action.payload.id,
+        id: addPrefixZero(action.payload.id),
         name: action.payload.name,
         type: action.payload.types[0].type.name,
         attack: action.payload.stats[1].base_stat,
