@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  BIOINFO_PRICE,
   CANDY_PRICE,
   MEDPACK_PRICE,
   PHOTO_PRICE,
   POKEBALL_PRICE,
+  SEARCHDEVICE_PRICE,
 } from "constant/prices";
 import { RootState } from "store/store";
 
@@ -65,7 +67,10 @@ export const trainserSlice = createSlice({
       state.backpack.medpack = state.backpack.medpack + 1;
       state.backpack.money = state.backpack.money - MEDPACK_PRICE;
     },
-
+    buySearchDevice: (state) => {
+      state.backpack.searchDevice = state.backpack.searchDevice + 1;
+      state.backpack.money = state.backpack.money - SEARCHDEVICE_PRICE;
+    },
     takePhoto: (state, { payload }: PayloadAction<string>) => {
       state.photographedPokemon = [...state.photographedPokemon, payload];
     },
@@ -74,6 +79,11 @@ export const trainserSlice = createSlice({
         state.backpack.money + state.photographedPokemon.length * PHOTO_PRICE;
       state.soldPhoto = [...state.photographedPokemon, ...state.soldPhoto];
       state.photographedPokemon = [];
+    },
+    sellBio: (state) => {
+      state.backpack.money =
+        state.backpack.money + state.backpack.bioInformation * BIOINFO_PRICE;
+      state.backpack.bioInformation = 0;
     },
   },
 });
@@ -87,9 +97,11 @@ export const {
   reducePokeball,
   buyPokeball,
   buyMedpack,
+  buySearchDevice,
   buyCandy,
   takePhoto,
   sellPhoto,
+  sellBio,
 } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;

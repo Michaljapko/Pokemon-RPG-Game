@@ -1,9 +1,16 @@
-import { CANDY_PRICE, MEDPACK_PRICE, POKEBALL_PRICE } from "constant/prices";
+import {
+  CANDY_PRICE,
+  MEDPACK_PRICE,
+  POKEBALL_PRICE,
+  SEARCHDEVICE_PRICE,
+} from "constant/prices";
 import {
   buyCandy,
   buyMedpack,
   buyPokeball,
+  buySearchDevice,
   selecktUnsoldPhoto,
+  sellBio,
   sellPhoto,
 } from "store/features/trainer/trainerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
@@ -15,15 +22,18 @@ const Shop = () => {
     <div>
       <h3>Shop</h3>
       <button>Sell Pokemon </button>
-      <button>Sell BioInformation </button>
+      <button onClick={() => dispatch(sellBio())}>Sell BioInformation </button>
       <button onClick={() => dispatch(sellPhoto())}>
         Sell Pokemon Photo ({numUnsoldPhoto})
       </button>
       <button onClick={() => dispatch(buyPokeball())}>
         Buy Pokeball ({POKEBALL_PRICE})
       </button>
+      <button onClick={() => dispatch(buySearchDevice())}>
+        Buy Search Device ({SEARCHDEVICE_PRICE})
+      </button>
       <button onClick={() => dispatch(buyCandy())}>
-        Buy Pokeball ({CANDY_PRICE})
+        Buy Candy ({CANDY_PRICE})
       </button>
       <button onClick={() => dispatch(buyMedpack())}>
         Medpack ({MEDPACK_PRICE})
