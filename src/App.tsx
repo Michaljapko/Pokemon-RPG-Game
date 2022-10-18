@@ -1,6 +1,6 @@
 import React from "react";
 import CatchPokemon from "store/features/gameplay/views/CatchPokemon";
-import SearchPokemon from "store/features/gameplay/views/SearchPokemon";
+import Search from "store/features/gameplay/views/Search";
 import TakePhoto from "store/features/gameplay/views/TakePhoto/TakePhoto";
 import Pokedex from "store/features/pokedex/views/Pokedex/Pokedex";
 import PokemonCard from "store/features/pokemon/views/PokemonCard";
@@ -12,7 +12,7 @@ function App() {
     <>
       <TrainerBack />
       <PokemonCard />
-      <SearchPokemon />
+      <Search />
       <CatchPokemon />
       <TakePhoto />
       <Pokedex />
