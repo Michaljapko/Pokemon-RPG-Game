@@ -35,6 +35,18 @@ export const trainserSlice = createSlice({
   name: "trainserSlice",
   initialState,
   reducers: {
+    addMedpack: (state) => {
+      state.backpack.medpack = state.backpack.medpack + 1;
+    },
+    addPokeball: (state) => {
+      state.backpack.pokeball = state.backpack.pokeball + 1;
+    },
+    addBio: (state) => {
+      state.backpack.bioInformation = state.backpack.bioInformation + 1;
+    },
+    addCandy: (state) => {
+      state.backpack.candy = state.backpack.candy + 1;
+    },
     reduceSearchDevice: (state) => {
       state.backpack.searchDevice = state.backpack.searchDevice - 1;
     },
@@ -50,9 +62,10 @@ export const trainserSlice = createSlice({
       state.backpack.money = state.backpack.money - CANDY_PRICE;
     },
     buyMedpack: (state) => {
-      state.backpack.pokeball = state.backpack.medpack + 1;
+      state.backpack.medpack = state.backpack.medpack + 1;
       state.backpack.money = state.backpack.money - MEDPACK_PRICE;
     },
+
     takePhoto: (state, { payload }: PayloadAction<string>) => {
       state.photographedPokemon = [...state.photographedPokemon, payload];
     },
@@ -66,6 +79,10 @@ export const trainserSlice = createSlice({
 });
 
 export const {
+  addMedpack,
+  addBio,
+  addCandy,
+  addPokeball,
   reduceSearchDevice,
   reducePokeball,
   buyPokeball,
@@ -77,7 +94,7 @@ export const {
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;
 export const selecktUnsoldPhoto = (state: RootState) =>
-  state.trainer.photographedPokemon
+  state.trainer.photographedPokemon;
 export const selecktPhotographedPokemon = (state: RootState) =>
   state.trainer.photographedPokemon.concat(state.trainer.soldPhoto);
 

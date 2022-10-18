@@ -9,6 +9,9 @@ import { getPokemon } from "store/features/pokemon/pokemonSlice";
 import {
   selecktBackpack,
   reduceSearchDevice,
+  addBio,
+  addPokeball,
+  addCandy,
 } from "store/features/trainer/trainerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 
@@ -21,7 +24,7 @@ const Search = () => {
       const getChanceRate = () => Math.random();
       dispatch(reduceSearchDevice());
       if (getChanceRate() < POKEMON_DROP) {
-        getPokemon();
+        dispatch(getPokemon());
         return;
       }
       if (getChanceRate() < NOTHING_DROP) {
@@ -29,15 +32,15 @@ const Search = () => {
         return;
       }
       if (getChanceRate() < BIO_DROP) {
-        console.log("bio");
+        dispatch(addBio());
         return;
       }
       if (getChanceRate() < POKEBALL_DROP) {
-        console.log("pokeball");
+        dispatch(addPokeball());
         return;
       }
       if (getChanceRate() < CANDY_DROP) {
-        console.log("candy");
+        dispatch(addCandy());
         return;
       }
       console.log("nothing");
