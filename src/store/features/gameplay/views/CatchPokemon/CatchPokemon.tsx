@@ -1,6 +1,7 @@
-import { catchPokemon } from "store/features/pokedex/pokedexSlice";
+
 import { selecktPokemon } from "store/features/pokemon/pokemonSlice";
 import {
+  catchPokemon,
   reducePokeball,
   selecktBackpack,
 } from "store/features/trainer/trainerSlice";

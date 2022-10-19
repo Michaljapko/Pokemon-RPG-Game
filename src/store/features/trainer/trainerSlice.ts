@@ -8,6 +8,7 @@ import {
   SEARCHDEVICE_PRICE,
 } from "constant/prices";
 import { RootState } from "store/store";
+import { PokemonType } from "../pokedex/types/pokemon.type";
 
 const initialState: {
   backpack: {
@@ -20,6 +21,7 @@ const initialState: {
   };
   photographedPokemon: string[];
   soldPhoto: string[];
+  pokedex: PokemonType[];
 } = {
   backpack: {
     candy: 0,
@@ -31,6 +33,7 @@ const initialState: {
   },
   photographedPokemon: [],
   soldPhoto: [],
+  pokedex: [],
 };
 
 export const trainserSlice = createSlice({
@@ -80,10 +83,14 @@ export const trainserSlice = createSlice({
       state.soldPhoto = [...state.photographedPokemon, ...state.soldPhoto];
       state.photographedPokemon = [];
     },
+
     sellBio: (state) => {
       state.backpack.money =
         state.backpack.money + state.backpack.bioInformation * BIOINFO_PRICE;
       state.backpack.bioInformation = 0;
+    },
+    catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
+      state.pokedex = [payload, ...state.pokedex];
     },
   },
 });
@@ -102,6 +109,7 @@ export const {
   takePhoto,
   sellPhoto,
   sellBio,
+  catchPokemon,
 } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;
@@ -109,5 +117,6 @@ export const selecktUnsoldPhoto = (state: RootState) =>
   state.trainer.photographedPokemon;
 export const selecktPhotographedPokemon = (state: RootState) =>
   state.trainer.photographedPokemon.concat(state.trainer.soldPhoto);
+export const selecktPokedex = (state: RootState) => state.trainer.pokedex;
 
 export default trainserSlice.reducer;

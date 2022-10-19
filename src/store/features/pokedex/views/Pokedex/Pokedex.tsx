@@ -1,6 +1,6 @@
 import { calculateCP } from "store/features/pokemon/helpers/calculateCP";
+import { selecktPokedex } from "store/features/trainer/trainerSlice";
 import { useAppSelector } from "store/hooks";
-import { selecktPokedex } from "../../pokedexSlice";
 
 const Pokedex = () => {
   const pokedexPokemons = useAppSelector(selecktPokedex);
