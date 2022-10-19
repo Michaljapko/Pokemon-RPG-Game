@@ -6,7 +6,7 @@ const PokemonCard = () => {
   return (
     <div>
       <img
-        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.id}.png`}
+        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.pokemonNum}.png`}
         alt={pokemon.name}
       />
       <h2>{pokemon.name}</h2>

@@ -1,5 +1,6 @@
 export type PokemonType = {
   id: string;
+  pokemonNum: string;
   name: string;
   type: string;
   attack: number;
