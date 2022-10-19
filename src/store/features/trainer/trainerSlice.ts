@@ -5,10 +5,12 @@ import {
   MEDPACK_PRICE,
   PHOTO_PRICE,
   POKEBALL_PRICE,
+  POKEMON_PRICE_RATE,
   SEARCHDEVICE_PRICE,
 } from "constant/prices";
 import { RootState } from "store/store";
 import { PokemonType } from "../pokedex/types/pokemon.type";
+import { calculateCP } from "../pokemon/helpers/calculateCP";
 
 const initialState: {
   backpack: {
@@ -89,6 +91,13 @@ export const trainserSlice = createSlice({
         state.backpack.money + state.backpack.bioInformation * BIOINFO_PRICE;
       state.backpack.bioInformation = 0;
     },
+    sellPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
+      state.backpack.money =
+        state.backpack.money + calculateCP(payload) * POKEMON_PRICE_RATE;
+      state.pokedex = state.pokedex.filter(
+        (pokemon) => pokemon.id !== payload.id
+      );
+    },
     catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
       state.pokedex = [payload, ...state.pokedex];
     },
@@ -109,6 +118,7 @@ export const {
   takePhoto,
   sellPhoto,
   sellBio,
+  sellPokemon,
   catchPokemon,
 } = trainserSlice.actions;
 
