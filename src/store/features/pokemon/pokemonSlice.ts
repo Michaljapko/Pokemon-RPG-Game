@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getRandomInt } from "helpers/getRandomInt";
 import { RootState } from "store/store";
 import { PokemonType } from "../pokedex/types/pokemon.type";
@@ -40,7 +40,11 @@ export const getPokemon = createAsyncThunk(
 export const pokemonSlice = createSlice({
   name: "pokemonSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    hitPokemon: (state, { payload }: PayloadAction<number>) => {
+      state.pokemon.hp = state.pokemon.hp - payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getPokemon.fulfilled, (state, action) => {
       const pokemon = {
@@ -58,6 +62,7 @@ export const pokemonSlice = createSlice({
     });
   },
 });
+export const { hitPokemon } = pokemonSlice.actions;
 
 export const selecktPokemon = (state: RootState) => state.pokemon.pokemon;
 

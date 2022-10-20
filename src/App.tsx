@@ -1,5 +1,6 @@
 import React from "react";
 import CatchPokemon from "store/features/gameplay/views/CatchPokemon";
+import Fight from "store/features/gameplay/views/Fight";
 import Search from "store/features/gameplay/views/Search";
 import TakePhoto from "store/features/gameplay/views/TakePhoto/TakePhoto";
 import Pokedex from "store/features/pokedex/views/Pokedex/Pokedex";
@@ -14,6 +15,7 @@ function App() {
       <PokemonCard />
       <Search />
       <CatchPokemon />
+      <Fight />
       <TakePhoto />
       <Pokedex />
       <Shop />

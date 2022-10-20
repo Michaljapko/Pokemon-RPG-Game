@@ -21,9 +21,10 @@ const initialState: {
     bioInformation: number;
     money: number;
   };
+  chosenPokemon: string | null;
+  pokedex: PokemonType[];
   photographedPokemon: string[];
   soldPhoto: string[];
-  pokedex: PokemonType[];
 } = {
   backpack: {
     candy: 0,
@@ -33,6 +34,7 @@ const initialState: {
     bioInformation: 0,
     money: 1000,
   },
+  chosenPokemon: null,
   photographedPokemon: [],
   soldPhoto: [],
   pokedex: [],
@@ -101,6 +103,16 @@ export const trainserSlice = createSlice({
     catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
       state.pokedex = [payload, ...state.pokedex];
     },
+    choosePokemon: (state, { payload }: PayloadAction<string>) => {
+      state.chosenPokemon = payload;
+    },
+    hitTrainerPokemon: (state, { payload }: PayloadAction<number>) => {
+      const indexOfCurrentPokemon = state.pokedex.findIndex(
+        (pokemon) => pokemon.id === state.chosenPokemon
+      );
+      const hp = state.pokedex[indexOfCurrentPokemon].currentHp;
+      state.pokedex[indexOfCurrentPokemon].currentHp = hp - payload;
+    },
   },
 });
 
@@ -120,6 +132,8 @@ export const {
   sellBio,
   sellPokemon,
   catchPokemon,
+  choosePokemon,
+  hitTrainerPokemon,
 } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;
@@ -128,5 +142,9 @@ export const selecktUnsoldPhoto = (state: RootState) =>
 export const selecktPhotographedPokemon = (state: RootState) =>
   state.trainer.photographedPokemon.concat(state.trainer.soldPhoto);
 export const selecktPokedex = (state: RootState) => state.trainer.pokedex;
+export const selecktChosenPokemon = (state: RootState) =>
+  state.trainer.pokedex.find(
+    (pokemon) => pokemon.id === state.trainer.chosenPokemon
+  );
 
 export default trainserSlice.reducer;

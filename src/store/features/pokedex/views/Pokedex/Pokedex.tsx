@@ -1,5 +1,6 @@
 import { calculateCP } from "store/features/pokemon/helpers/calculateCP";
 import {
+  choosePokemon,
   selecktPokedex,
   sellPokemon,
 } from "store/features/trainer/trainerSlice";
@@ -20,8 +21,11 @@ const Pokedex = () => {
             <p>
               {pokemon.currentHp}/{pokemon.hp}
             </p>
-            <p>Edit name / Heal / Lvl Up / Sell</p>
+            <p>Edit name / Heal / Lvl Up </p>
             <button onClick={() => dispatch(sellPokemon(pokemon))}>sell</button>
+            <button onClick={() => dispatch(choosePokemon(pokemon.id))}>
+              Chose
+            </button>
           </div>
         ))}
     </div>
