@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { HEAL_RATE } from "constant/healing";
 import {
   BIOINFO_PRICE,
   CANDY_PRICE,
@@ -100,6 +101,24 @@ export const trainserSlice = createSlice({
         (pokemon) => pokemon.id !== payload.id
       );
     },
+    healPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
+      state.backpack.medpack -= 1;
+      const indexPokemon = state.pokedex.findIndex(
+        (pokemon) => pokemon.id === payload.id
+      );
+
+      const amountOfHeal = state.pokedex[indexPokemon].hp * HEAL_RATE;
+
+      if (
+        amountOfHeal + state.pokedex[indexPokemon].currentHp >
+        state.pokedex[indexPokemon].hp
+      ) {
+        state.pokedex[indexPokemon].currentHp = state.pokedex[indexPokemon].hp;
+        return;
+      }
+
+      state.pokedex[indexPokemon].currentHp += amountOfHeal;
+    },
     catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
       state.pokedex = [payload, ...state.pokedex];
     },
@@ -110,8 +129,8 @@ export const trainserSlice = createSlice({
       const indexOfCurrentPokemon = state.pokedex.findIndex(
         (pokemon) => pokemon.id === state.chosenPokemon
       );
-      const hp = state.pokedex[indexOfCurrentPokemon].currentHp;
-      state.pokedex[indexOfCurrentPokemon].currentHp = hp - payload;
+
+      state.pokedex[indexOfCurrentPokemon].currentHp -= payload;
     },
   },
 });
@@ -131,6 +150,7 @@ export const {
   sellPhoto,
   sellBio,
   sellPokemon,
+  healPokemon,
   catchPokemon,
   choosePokemon,
   hitTrainerPokemon,

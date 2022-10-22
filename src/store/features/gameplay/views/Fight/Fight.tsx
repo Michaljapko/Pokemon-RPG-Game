@@ -1,4 +1,4 @@
-import { ATTACK_RATE, DEFENCE_RATE, MISS_RATE } from "constant/attackRate";
+import { ATTACK_RATE, DEFENCE_RATE, MISS_RATE } from "constant/fightRate";
 import { PokemonType } from "store/features/pokedex/types/pokemon.type";
 import {
   hitPokemon,

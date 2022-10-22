@@ -3,6 +3,7 @@ import {
   choosePokemon,
   selecktPokedex,
   sellPokemon,
+  healPokemon,
 } from "store/features/trainer/trainerSlice";
 import { useAppSelector, useAppDispatch } from "store/hooks";
 
@@ -21,8 +22,9 @@ const Pokedex = () => {
             <p>
               {pokemon.currentHp}/{pokemon.hp}
             </p>
-            <p>Edit name / Heal / Lvl Up </p>
+            <p>Edit name /Lvl Up </p>
             <button onClick={() => dispatch(sellPokemon(pokemon))}>sell</button>
+            <button onClick={() => dispatch(healPokemon(pokemon))}>Heal</button>
             <button onClick={() => dispatch(choosePokemon(pokemon.id))}>
               Chose
             </button>
