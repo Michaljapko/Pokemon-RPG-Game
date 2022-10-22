@@ -46,57 +46,54 @@ export const trainserSlice = createSlice({
   initialState,
   reducers: {
     addMedpack: (state) => {
-      state.backpack.medpack = state.backpack.medpack + 1;
+      state.backpack.medpack += 1;
     },
     addPokeball: (state) => {
-      state.backpack.pokeball = state.backpack.pokeball + 1;
+      state.backpack.pokeball += 1;
     },
     addBio: (state) => {
-      state.backpack.bioInformation = state.backpack.bioInformation + 1;
+      state.backpack.bioInformation += 1;
     },
     addCandy: (state) => {
-      state.backpack.candy = state.backpack.candy + 1;
+      state.backpack.candy += 1;
     },
     reduceSearchDevice: (state) => {
-      state.backpack.searchDevice = state.backpack.searchDevice - 1;
+      state.backpack.searchDevice -= 1;
     },
     reducePokeball: (state) => {
-      state.backpack.pokeball = state.backpack.pokeball - 1;
+      state.backpack.pokeball -= 1;
     },
     buyPokeball: (state) => {
-      state.backpack.pokeball = state.backpack.pokeball + 1;
-      state.backpack.money = state.backpack.money - POKEBALL_PRICE;
+      state.backpack.pokeball += 1;
+      state.backpack.money -= POKEBALL_PRICE;
     },
     buyCandy: (state) => {
-      state.backpack.pokeball = state.backpack.candy + 1;
-      state.backpack.money = state.backpack.money - CANDY_PRICE;
+      state.backpack.pokeball += 1;
+      state.backpack.money -= CANDY_PRICE;
     },
     buyMedpack: (state) => {
-      state.backpack.medpack = state.backpack.medpack + 1;
-      state.backpack.money = state.backpack.money - MEDPACK_PRICE;
+      state.backpack.medpack += 1;
+      state.backpack.money -= MEDPACK_PRICE;
     },
     buySearchDevice: (state) => {
-      state.backpack.searchDevice = state.backpack.searchDevice + 1;
-      state.backpack.money = state.backpack.money - SEARCHDEVICE_PRICE;
+      state.backpack.searchDevice += 1;
+      state.backpack.money -= SEARCHDEVICE_PRICE;
     },
     takePhoto: (state, { payload }: PayloadAction<string>) => {
       state.photographedPokemon = [...state.photographedPokemon, payload];
     },
     sellPhoto: (state) => {
-      state.backpack.money =
-        state.backpack.money + state.photographedPokemon.length * PHOTO_PRICE;
+      state.backpack.money += state.photographedPokemon.length * PHOTO_PRICE;
       state.soldPhoto = [...state.photographedPokemon, ...state.soldPhoto];
       state.photographedPokemon = [];
     },
 
     sellBio: (state) => {
-      state.backpack.money =
-        state.backpack.money + state.backpack.bioInformation * BIOINFO_PRICE;
+      state.backpack.money += state.backpack.bioInformation * BIOINFO_PRICE;
       state.backpack.bioInformation = 0;
     },
     sellPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
-      state.backpack.money =
-        state.backpack.money + calculateCP(payload) * POKEMON_PRICE_RATE;
+      state.backpack.money += calculateCP(payload) * POKEMON_PRICE_RATE;
       state.pokedex = state.pokedex.filter(
         (pokemon) => pokemon.id !== payload.id
       );
