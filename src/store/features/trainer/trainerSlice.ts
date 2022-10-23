@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { MAX_STATS_ADD, MIN_STATS_ADD } from "constant/evolving";
 import { HEAL_RATE } from "constant/healing";
 import {
   BIOINFO_PRICE,
@@ -9,6 +10,7 @@ import {
   POKEMON_PRICE_RATE,
   SEARCHDEVICE_PRICE,
 } from "constant/prices";
+import { getRandomInt } from "helpers/getRandomInt";
 import { RootState } from "store/store";
 import { PokemonType } from "../pokedex/types/pokemon.type";
 import { calculateCP } from "../pokemon/helpers/calculateCP";
@@ -116,6 +118,27 @@ export const trainserSlice = createSlice({
 
       state.pokedex[indexPokemon].currentHp += amountOfHeal;
     },
+    evolvePokemon: (state, { payload }: PayloadAction<PokemonType>) => {
+      const indexPokemon = state.pokedex.findIndex(
+        (pokemon) => pokemon.id === payload.id
+      );
+
+      state.backpack.candy -= Math.pow(2, payload.lvl);
+      state.pokedex[indexPokemon].lvl += 1;
+
+      const statsGrow = getRandomInt(MIN_STATS_ADD, MAX_STATS_ADD);
+      const num = getRandomInt(1, 4);
+      if (num === 1) {
+        state.pokedex[indexPokemon].hp += statsGrow;
+        state.pokedex[indexPokemon].currentHp = state.pokedex[indexPokemon].hp;
+      }
+      if (num === 2) {
+        state.pokedex[indexPokemon].attack += statsGrow;
+      }
+      if (num === 3) {
+        state.pokedex[indexPokemon].defence += statsGrow;
+      }
+    },
     catchPokemon: (state, { payload }: PayloadAction<PokemonType>) => {
       state.pokedex = [payload, ...state.pokedex];
     },
@@ -151,6 +174,7 @@ export const {
   catchPokemon,
   choosePokemon,
   hitTrainerPokemon,
+  evolvePokemon,
 } = trainserSlice.actions;
 
 export const selecktBackpack = (state: RootState) => state.trainer.backpack;

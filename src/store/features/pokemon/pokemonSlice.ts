@@ -24,6 +24,7 @@ const initialState: {
     expirience: 34,
     hp: 33,
     currentHp: 33,
+    lvl: 1,
   },
 };
 
@@ -57,6 +58,7 @@ export const pokemonSlice = createSlice({
         expirience: action.payload.base_experience,
         hp: action.payload.stats[0].base_stat,
         currentHp: action.payload.stats[0].base_stat,
+        lvl: 1,
       };
       state.pokemon = pokemon;
     });

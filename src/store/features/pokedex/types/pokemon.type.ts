@@ -8,4 +8,5 @@ export type PokemonType = {
   expirience: number;
   hp: number;
   currentHp: number;
+  lvl: number;
 };
