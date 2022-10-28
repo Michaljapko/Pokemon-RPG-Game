@@ -24,6 +24,11 @@ const initialState: {
     bioInformation: number;
     money: number;
   };
+  skills: {
+    lvl: number;
+    skillPoints: number;
+    pokedexLvl: number;
+  };
   chosenPokemon: string | null;
   pokedex: PokemonType[];
   photographedPokemon: string[];
