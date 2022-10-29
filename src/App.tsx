@@ -1,12 +1,12 @@
 import React from "react";
-import CatchPokemon from "store/features/gameplay/views/CatchPokemon";
-import Fight from "store/features/gameplay/views/Fight";
-import Search from "store/features/gameplay/views/Search";
-import TakePhoto from "store/features/gameplay/views/TakePhoto/TakePhoto";
-import Pokedex from "store/features/pokedex/views/Pokedex/Pokedex";
-import PokemonCard from "store/features/pokemon/views/PokemonCard";
-import Shop from "store/features/shop/views/Shop/Shop";
-import TrainerBack from "store/features/trainer/views/TrainerBack/TrainerBack";
+import CatchPokemon from "features/gameplay/views/CatchPokemon";
+import Fight from "features/gameplay/views/Fight";
+import Search from "features/gameplay/views/Search";
+import TakePhoto from "features/gameplay/views/TakePhoto/TakePhoto";
+import Pokedex from "features/pokedex/views/Pokedex/Pokedex";
+import PokemonCard from "features/pokemon/views/PokemonCard";
+import Shop from "features/shop/views/Shop/Shop";
+import TrainerBack from "features/trainer/views/TrainerBack/TrainerBack";
 
 function App() {
   return (

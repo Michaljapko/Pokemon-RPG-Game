@@ -12,7 +12,7 @@ import {
   selecktUnsoldPhoto,
   sellBio,
   sellPhoto,
-} from "store/features/trainer/trainerSlice";
+} from "features/trainer/trainerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 
 const Shop = () => {

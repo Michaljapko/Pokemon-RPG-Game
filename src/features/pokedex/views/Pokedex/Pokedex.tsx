@@ -1,11 +1,11 @@
-import { calculateCP } from "store/features/pokemon/helpers/calculateCP";
+import { calculateCP } from "features/pokemon/helpers/calculateCP";
 import {
   choosePokemon,
   selecktPokedex,
   sellPokemon,
   healPokemon,
   evolvePokemon,
-} from "store/features/trainer/trainerSlice";
+} from "features/trainer/trainerSlice";
 import { useAppSelector, useAppDispatch } from "store/hooks";
 
 const Pokedex = () => {

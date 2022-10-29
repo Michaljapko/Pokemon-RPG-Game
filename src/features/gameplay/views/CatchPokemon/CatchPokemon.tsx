@@ -1,10 +1,9 @@
-
-import { selecktPokemon } from "store/features/pokemon/pokemonSlice";
+import { selecktPokemon } from "features/pokemon/pokemonSlice";
 import {
   catchPokemon,
   reducePokeball,
   selecktBackpack,
-} from "store/features/trainer/trainerSlice";
+} from "features/trainer/trainerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 
 const CatchPokemon = () => {

@@ -1,13 +1,10 @@
 import { ATTACK_RATE, DEFENCE_RATE, MISS_RATE } from "constant/fightRate";
-import { PokemonType } from "store/features/pokedex/types/pokemon.type";
-import {
-  hitPokemon,
-  selecktPokemon,
-} from "store/features/pokemon/pokemonSlice";
+import { PokemonType } from "features/pokedex/types/pokemon.type";
+import { hitPokemon, selecktPokemon } from "features/pokemon/pokemonSlice";
 import {
   hitTrainerPokemon,
   selecktChosenPokemon,
-} from "store/features/trainer/trainerSlice";
+} from "features/trainer/trainerSlice";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
 

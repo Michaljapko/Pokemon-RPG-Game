@@ -5,14 +5,14 @@ import {
   POKEBALL_DROP,
   POKEMON_DROP,
 } from "constant/searchingDrop";
-import { getPokemon } from "store/features/pokemon/pokemonSlice";
+import { getPokemon } from "features/pokemon/pokemonSlice";
 import {
   selecktBackpack,
   reduceSearchDevice,
   addBio,
   addPokeball,
   addCandy,
-} from "store/features/trainer/trainerSlice";
+} from "features/trainer/trainerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 
 const Search = () => {
